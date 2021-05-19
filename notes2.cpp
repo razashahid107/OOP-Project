@@ -14,6 +14,7 @@ class Login
 public:
     string email, password;
     char pass;
+    int npass, char_count = 0;
     vector<char> temp {};
 public:
     // we can have a contructor for the login
@@ -33,10 +34,23 @@ public:
         cout << "Enter Password: ";
         for (int i=0 ; ;){
             pass = getch();
-            if ((pass >= 'a' && pass <= 'z') || (pass >= 'A' && pass <= 'Z') || (pass >= '0' && pass <= '9')){
+            npass = (int)pass;
+            if (npass >= 20 && npass <= 126 && char_count <= 15){
                 temp.push_back(pass);
+                char_count++;
                 cout << '*'; 
             }
+            else if (char_count > 15){
+                cout << "Maximum Limit reached!\n";
+                break;
+            }
+            else if (npass == 8 && char_count != 0){
+                cout << '\b' << " " << '\b';
+                temp.pop_back();
+                char_count--;
+            }
+            else if (char_count == 0)
+                continue;
             else
             {
                 cout << endl;
