@@ -1,12 +1,14 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
+
 // ntoes
 
 class Login
 {
-private:
+public:
     string email, password;
 public:
     // we can have a contructor for the login
@@ -35,15 +37,17 @@ public:
     {
         return password;
     }
+
+    // Adding a friend function to allow it to save the notes in an array
+    friend void SaveNote();
 };
 
 class Note : public Login
 {
     // date and time for note creation
-private:
+public:
     string note_data;
     string note_title;
-
 public:
     Note(){
         char choice_input_char;
@@ -73,6 +77,7 @@ public:
         while (true) {    
             if (int_choice == 1){
                 setNote_Title();
+                break;
             }
             else if (int_choice == 0) {
                 break;
@@ -80,6 +85,8 @@ public:
         }
         // since the while loop will break anyways, we'll now get to setting the data of the note
         setData();
+        SaveNote(*this);
+
     }
     void setNote_Title() {   
         cout << "Title: ";
@@ -98,7 +105,19 @@ public:
 
     void DelNote() {}
     void EditNote() {}
+
+    // Adding a friend function to allow it to save the notes in an array
+    friend void SaveNote(Note obj1);
 };
+
+// This is a friend function which adds an individual note to the dynamic array set_of_notes
+void SaveNote(Note obj){
+    vector<string> set_of_notes{};
+    string temp_note;
+    temp_note = obj.getData();
+    set_of_notes.push_back(temp_note);
+    // cout << "This is save note wala";
+}
 
 int main()
 {

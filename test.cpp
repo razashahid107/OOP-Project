@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 #include <fstream>
-int main(){
-    fstream MyReadFile("data.txt");
+
+
+class A{
+    friend void Hello();
+}
+class B{
+
+}
+
+void Hello(){
+    
 }
