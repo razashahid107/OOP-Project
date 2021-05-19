@@ -2,6 +2,9 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <iomanip>
+#include <stdlib.h>
+#include <conio.h>
 using namespace std;
 
 // ntoes
@@ -10,6 +13,8 @@ class Login
 {
 public:
     string email, password;
+    char pass;
+    vector<char> temp {};
 public:
     // we can have a contructor for the login
     Login(){
@@ -24,10 +29,20 @@ public:
              << "E-Mail: ";
         cin >> email;
     }
-    void setPassword()
-    {
-        cout << "Password: ";
-        cin >> password;
+    void setPassword(){
+        cout << "Enter Password: ";
+        for (int i=0 ; ;){
+            pass = getch();
+            if ((pass >= 'a' && pass <= 'z') || (pass >= 'A' && pass <= 'Z') || (pass >= '0' && pass <= '9')){
+                temp.push_back(pass);
+                cout << '*'; 
+            }
+            else
+            {
+                cout << endl;
+                break;
+            }
+        }
     }
     string getEmail()
     {
@@ -35,7 +50,9 @@ public:
     }
     string getPassword()
     {
-        return password;
+        for (int i=0; i<=temp.size(); i++){
+            std::cout << temp[i];
+        }
     }
 
     // Adding a friend function to allow it to save the notes in an array
