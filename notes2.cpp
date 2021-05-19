@@ -74,6 +74,7 @@ public:
         // set note title
         cout << "Do you want to have a title" << endl << "\t1. Yes" << endl << "\t0. No\t" << "=> ";
         cin >> int_choice;
+        
         while (true) {    
             if (int_choice == 1){
                 setNote_Title();
@@ -82,6 +83,8 @@ public:
             else if (int_choice == 0) {
                 break;
             }
+            cout << "Wrong input. Try again :)";
+            cin >> int_choice;
         }
         // since the while loop will break anyways, we'll now get to setting the data of the note
         setData();
