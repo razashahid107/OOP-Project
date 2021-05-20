@@ -3,7 +3,7 @@
 #include<vector>
 using namespace std;
 
-int encr(string str){
+string encr(string str){
     int code, count = 0;
     vector<int> veccode {};
     int length = str.size();
@@ -37,8 +37,4 @@ int encr(string str){
         getchar();
     }
 
-}
-int main(){
-    encr("azeem is a good boy");
-    return 0;
 }

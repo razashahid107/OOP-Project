@@ -1,6 +1,7 @@
-#include<iostream>
-#include<iomanip>
-#include<fstream>
+#include <iostream>
+#include <iomanip>
+#include <fstream>
+#include "encryption.cpp"
 using namespace std;
 
 class signup{
@@ -36,7 +37,7 @@ public:
             getline(cin, Password);
             cout << endl << "Confirm Password: ";                       // Passsword asterik protection
             getline(cin, con_Password);
-            if (Password = con_Password) break;
+            if (Password == con_Password) break;
             else cout << "Wrong choice entered! Please try again";
         }
         cout << endl << "Day of Birth: ";
@@ -49,14 +50,11 @@ public:
 
     	void fsave(){
             myfile.open("credentials.csv");
-            myfile << first_name << ',' << second_name << ',' << Email << ',' 
-                << Password << ',' << day_birth << ',' << month_birth << ',' 
-                <<year_birth;
-            myfile.close()
+            myfile << encr(first_name) << ',' << encr(second_name) << ',' << encr(Email) << ',' 
+                << encr(Password) << ',' << day_birth << ',' << month_birth << ',' 
+                << year_birth;
+            myfile.close();
         }
-
-    
-
 };
 
 int main(){
