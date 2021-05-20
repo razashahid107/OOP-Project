@@ -13,9 +13,7 @@ void clrscr(){
     system("cls");
 }
 
-void exit(){
-    ;
-}
+void exit();
 void warning(){
     clrscr();
     cout << "Wrong choice entered! Please try again";
