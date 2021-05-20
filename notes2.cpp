@@ -5,10 +5,20 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <conio.h>
+#include<windows.h>
 using namespace std;
 
 // notes
+void clrscr(){
+    system("cls");
+}
 
+void exit();
+void warning(){
+    clrscr();
+    cout << "Wrong choice entered! Please try again";
+    Sleep(2000);
+}
 class Login
 {
 private:
@@ -146,70 +156,67 @@ public:
     {
         char choice_input_char;
         int choice_input_int;
-        cout << "Do you want to create a new note? If yes then press y otherwise press n" << endl
-             << "\t=> ";
-        cin >> choice_input_char;
-        if (choice_input_char == 'y')
-        {
-            AddNote();
-        }
-        else if (choice_input_char == 'n')
-        {
-            cout << "What do you want to do?" << endl;
-            cout << "\t1. Edit a previous note" << endl;
-            cout << "\t2. Delete a previous note";
-            cout << endl;
-            cin >> choice_input_int;
-            if (choice_input_int == 1)
-            {
-                EditNote();
+        while (1){
+            clrscr();
+            cout << "Do you want to create a new note (y/n)? ";
+            choice_input_char  = getch();
+            if (choice_input_char == 'y') { AddNote(); }
+            else if (choice_input_char == 'n') { 
+                clrscr();
+                cout << "What do you want to do?" << endl; 
+                cout << "\t1. Edit a previous note" << endl;
+                cout << "\t2. Delete a previous note" << endl ;
+                cout << "\t3. Exit" ;
+                cout << endl;
+                cin >> choice_input_int;
+                if (choice_input_int == 1) {
+                    EditNote();
+                    break;
+                }
+                else if (choice_input_int == 2){
+                    DelNote();
+                    break;
+                }
+                else if (choice_input_int == 3){
+                    exit();
+                    break;
+                }
+                else warning();
             }
-            else if (choice_input_int == 2)
-            {
-                DelNote();
-            }
+            else warning();
         }
+    
     }
-    void AddNote()
-    {
-        int int_choice;
+    void AddNote() {
+        char char_choice;
         // set note title
-        cout << "Do you want to have a title" << endl
-             << "\t1. Yes" << endl
-             << "\t0. No\t"
-             << "=> ";
-        cin >> int_choice;
-
-        while (true)
-        {
-            if (int_choice == 1)
-            {
+        while (true) {  
+            clrscr();
+            cout << "\n\nDo you want to have a title (y/n)? "; //<< endl << "\t1. Yes" << endl << "\t0. No\t" << "=> ";
+            char_choice = getch();  
+            if (char_choice == 'y'){
                 setNote_Title();
                 break;
             }
-            else if (int_choice == 0)
-            {
+            else if (char_choice == 'n') {
                 break;
             }
-            cout << "Wrong input. Try again :)";
-            cin >> int_choice;
+           warning();
         }
         // since the while loop will break anyways, we'll now get to setting the data of the note
         setData();
         SaveNote(*this);
     }
-    void setNote_Title()
-    {
-        cout << "Title: ";
-        cin >> note_title;
+    void setNote_Title() {   
+        cout << "\nTitle: ";
+        cin >> note_title;        
     }
     string getNote_Title()
     {
         return note_title;
     }
-    void setData()
-    {
-        cout << "Enter your Text: " << endl;
+    void setData(){
+        cout << "\nEnter your Text: " << endl;
         cin >> note_data;
     }
     string getData()
