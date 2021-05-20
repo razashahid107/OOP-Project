@@ -7,7 +7,7 @@
 #include <conio.h>
 using namespace std;
 
-// ntoes
+// notes
 
 class Login
 {
@@ -35,21 +35,21 @@ public:
         for (int i=0 ; ;){
             pass = getch();
             npass = (int)pass;
-            if (npass >= 20 && npass <= 126 && char_count <= 15){
+            if (npass >= 20 && npass <= 126 && char_count <= 15){       //displays asterik instead of characters to maintain privacy
                 temp.push_back(pass);
                 char_count++;
                 cout << '*'; 
             }
             else if (char_count > 15){
-                cout << "Maximum Limit reached!\n";
+                cout << "Maximum Limit reached!\n";                     // Checks for maximunm limit
                 break;
             }
             else if (npass == 8 && char_count != 0){
-                cout << '\b' << " " << '\b';
+                cout << '\b' << " " << '\b';                            // Makes sure that user can use backspace and backspace do work
                 temp.pop_back();
                 char_count--;
             }
-            else if (char_count == 0)
+            else if (char_count == 0)                                   // stops to erase the characters already printed
                 continue;
             else
             {
