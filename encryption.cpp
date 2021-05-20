@@ -31,10 +31,7 @@ string encr(string str){
     for (int i = 0; i < vecstr.size() + count * 3; i++){
         vecenc.push_back((char)veccode[i]);
     }
-
-    for (int i = 0; i < vecenc.size(); i++){
-        cout << vecenc[i];
-        getchar();
-    }
+    string f_str(vecenc.begin(), vecenc.end());
+    return f_str;
 
 }
