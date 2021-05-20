@@ -11,7 +11,7 @@ using namespace std;
 
 class Login
 {
-public:
+private:
     string email, password;
     char pass;
     int npass, char_count = 0;
@@ -35,7 +35,7 @@ public:
         for (int i=0 ; ;){
             pass = getch();
             npass = (int)pass;
-            if (npass >= 20 && npass <= 126 && char_count <= 15){       //displays asterik instead of characters to maintain privacy
+            if (npass >= 20 && npass <= 126 && char_count <= 15){       //displays asteriks instead of characters to maintain privacy
                 temp.push_back(pass);
                 char_count++;
                 cout << '*'; 
