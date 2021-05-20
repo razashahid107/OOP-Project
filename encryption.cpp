@@ -33,5 +33,4 @@ string encr(string str){
     }
     string f_str(vecenc.begin(), vecenc.end());
     return f_str;
-
 }
