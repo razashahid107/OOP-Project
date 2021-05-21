@@ -4,7 +4,7 @@
 #include "encryption.cpp"
 using namespace std;
 
-class signup{
+class Signup{
 private:
     string first_name;
     string second_name;
@@ -20,7 +20,7 @@ public:
         for (int i = 0; i < b; i++)
         cout << '\b';
     }    
-    signup(){
+    Signup(){
         new_entry();
         fsave();
     }
@@ -58,6 +58,6 @@ public:
 };
 
 int main(){
-    signup s1;
+    Signup s1;
     return 0;
 }

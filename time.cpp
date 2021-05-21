@@ -1,7 +1,7 @@
 #include<iostream>
 #include<ctime>
 using namespace std;
-class time_stamp{
+class TimeStamp{
 private:
     time_t now = time(0);
     tm t_now =  *localtime(&now);
@@ -33,12 +33,10 @@ public:
     void timestamp(){
         cout << ctime(&now);
     }
-
-    //friend void put_time(const string s);    
 };
 
 void put_time(const string s){
-    time_stamp t1;
+    TimeStamp t1;
     if (s == "wd")        t1.week_day();
     else if (s == "hh")   t1.hour();
     else if (s == "mm")   t1.minute();
@@ -46,6 +44,7 @@ void put_time(const string s){
     else if (s == "wd")   t1.day();
     else if (s == "mo")   t1.month();
     else if (s == "yy")   t1.year();
+    else if (s == "date") t1.timestamp();
 }
 
 int main(){
