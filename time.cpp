@@ -10,25 +10,28 @@ private:
 
 public:
     string hour(){
-        cout << t_now.tm_hour;
+        cout << t_now.tm_hour;              // Invoking hour
     }
     string minute(){
-        cout << t_now.tm_min;
+        cout << t_now.tm_min;               // Invoking minute
     }
     string sec(){
-        cout << t_now.tm_sec;
+        cout << t_now.tm_sec;               //Invoking seconds
     }
     string day(){
-        cout << t_now.tm_mday;
+        cout << t_now.tm_mday;              // Invoking day
     }
     string month(){
-        cout << month_name[t_now.tm_mon];
+        cout << month_name[t_now.tm_mon];   // Invoking month
     }
     string year(){
-        cout << 1900 + t_now.tm_year;
+        cout << 1900 + t_now.tm_year;       // Invoking Year
     }
-    string week_day(){
-        cout << weekdays[t_now.tm_wday];
+    string week_day_alphabet(){
+        cout << weekdays[t_now.tm_wday];    // Invoking day of week in alphabets
+    }
+    string week_day_digit(){
+        cout << t_now.tm_wday;              // Invoking day of week in digits
     }
     void timestamp(){
         cout << ctime(&now);
@@ -37,7 +40,8 @@ public:
 
 void put_time(const string s){
     TimeStamp t1;
-    if (s == "wd")        t1.week_day();
+    if (s == "wda")       t1.week_day_alphabet();
+    else if (s == "wdd")  t1.week_day_digit();
     else if (s == "hh")   t1.hour();
     else if (s == "mm")   t1.minute();
     else if (s == "ss")   t1.sec();
