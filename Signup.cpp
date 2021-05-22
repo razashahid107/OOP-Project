@@ -49,10 +49,10 @@ public:
     }
 
     	void fsave(){
-            myfile.open("credentials.csv");
+            myfile.open("credentials.csv", ios::out | ios::app);
             myfile << encr(first_name) << ',' << encr(second_name) << ',' << encr(Email) << ',' 
                 << encr(Password) << ',' << day_birth << ',' << month_birth << ',' 
-                << year_birth;
+                << year_birth << '\n';
             myfile.close();
         }
 };
